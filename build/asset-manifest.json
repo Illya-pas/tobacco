@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.694a0d0b.chunk.css",
+    "main.js": "/static/js/main.90b24e1e.chunk.js",
+    "main.js.map": "/static/js/main.90b24e1e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f38df283.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f38df283.js.map",
+    "static/js/2.d8677c43.chunk.js": "/static/js/2.d8677c43.chunk.js",
+    "static/js/2.d8677c43.chunk.js.map": "/static/js/2.d8677c43.chunk.js.map",
+    "static/js/3.44d9b0e2.chunk.js": "/static/js/3.44d9b0e2.chunk.js",
+    "static/js/3.44d9b0e2.chunk.js.map": "/static/js/3.44d9b0e2.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.694a0d0b.chunk.css.map": "/static/css/main.694a0d0b.chunk.css.map",
+    "static/js/2.d8677c43.chunk.js.LICENSE.txt": "/static/js/2.d8677c43.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/SegoeUI.b127acaf.ttf",
+    "static/media/cart.e4e6bcb7.svg": "/static/media/cart.e4e6bcb7.svg",
+    "static/media/cigarette1.1674b400.png": "/static/media/cigarette1.1674b400.png",
+    "static/media/no-cigarette.9bb9be18.png": "/static/media/no-cigarette.9bb9be18.png",
+    "static/media/point.4c4b490e.svg": "/static/media/point.4c4b490e.svg",
+    "static/media/right-arrow-white.b82ad54c.svg": "/static/media/right-arrow-white.b82ad54c.svg",
+    "static/media/search.f5aa3bbd.svg": "/static/media/search.f5aa3bbd.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f38df283.js",
+    "static/js/2.d8677c43.chunk.js",
+    "static/css/main.694a0d0b.chunk.css",
+    "static/js/main.90b24e1e.chunk.js"
+  ]
+}
