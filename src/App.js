@@ -10,6 +10,7 @@ import Catalog from "./components/menu/Catalog";
 import { changeWidthMenu } from "./redux/actions";
 import Footer from "./components/footer/Footer";
 import Items from "./pages/Items";
+import Article from "./pages/Article";
 
 const useStyles = makeStyles({
 	root: {
@@ -53,6 +54,7 @@ function App() {
 								<Route exact path="/contacts" component={Contacts} />
 								<Route exact path="/feedbacks" component={Feedbacks} />
 								<Route path="/items" component={Items} />
+								<Route path="/article" component={Article} />
 							</Switch>
 						</div>
 					</main>

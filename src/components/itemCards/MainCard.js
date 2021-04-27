@@ -4,6 +4,7 @@ import { colors } from "../../theme/colors";
 import CustomButton from "../menuItems/CustomButton";
 import { addToCart } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles({
 	card: {
@@ -80,7 +81,9 @@ export default function MainCard({ itemCard, styles }) {
 			{!itemCard.available && (
 				<span className={classes.noAvailable}>Немає в наявності</span>
 			)}
-			<img src={itemCard.img} alt="item" />
+			<NavLink to={"/article/" + itemCard.id}>
+				<img src={itemCard.img} alt="item" />
+			</NavLink>
 			<div className={classes.cardInfo}>
 				<div className={classes.cardDescribe}>
 					<p>{itemCard.type}</p>
