@@ -6,11 +6,15 @@ import ItemSlider from "../components/itemCards/ItemSlider";
 import { colors } from "../theme/colors";
 import { addToCart } from "../redux/actions";
 import Divider from "../components/Divider";
+import CustomTabs from "../components/otherComponents/CustomTabs";
 
 const useStyles = makeStyles({
 	root: {
 		display: "flex",
 		borderBottom: `1px solid ${colors.secondary}`,
+		"@media (max-width: 1329px)": {
+			flexDirection: "column",
+		},
 	},
 	info: {
 		flexGrow: 1,
@@ -22,9 +26,7 @@ const useStyles = makeStyles({
 		},
 	},
 	itemInfo: {
-		padding: 40,
-		// "& h3": {
-		// },
+		padding: 35,
 	},
 	itemId: {
 		fontWeight: 300,
@@ -44,10 +46,10 @@ const useStyles = makeStyles({
 		width: "100%",
 		maxWidth: 500,
 		justifyContent: "space-between",
-		"@media (max-width: 1300px)": {
-			flexDirection: "column",
-			alignItems: "flex-start",
-		},
+		// "@media (max-width: 1300px)": {
+		// 	flexDirection: "column",
+		// 	alignItems: "flex-start",
+		// },
 		"& h2": {
 			minWidth: 204,
 			fontSize: 30,
@@ -57,7 +59,24 @@ const useStyles = makeStyles({
 	},
 	characteristics: {
 		display: "flex",
-		padding: 40,
+		flexDirection: "column",
+		padding: 35,
+	},
+	characteristicsInfo: {
+		display: "flex",
+		fontSize: 19,
+		lineHeight: "26.6px",
+	},
+	characteristicsLeft: {
+		"& h4": {
+			fontWeight: 600,
+		},
+	},
+	characteristicsRight: {
+		marginLeft: 35,
+		"& h4": {
+			fontWeight: 300,
+		},
 	},
 });
 
@@ -142,16 +161,22 @@ export default function Article() {
 				<div className={classes.characteristics}>
 					<h3>Характеристики</h3>
 					<div className={classes.characteristicsInfo}>
-						<div className={classes.characteristicsInfo.left}>
-							{characteristics.map((characteristic) => {})}
+						<div className={classes.characteristicsLeft}>
+							{characteristics.map((characteristic, index) => {
+								return <h4 key={index}>{characteristic.title}</h4>;
+							})}
 						</div>
-						<div className={classes.characteristicsInfo.right}></div>
+						<div className={classes.characteristicsRight}>
+							{characteristics.map((characteristic, index) => {
+								return <h4 key={index}>{characteristic.value}</h4>;
+							})}
+						</div>
 					</div>
 				</div>
 
 				<Divider />
 
-				<div></div>
+				<CustomTabs />
 			</div>
 		</div>
 	);

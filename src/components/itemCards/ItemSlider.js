@@ -11,6 +11,11 @@ const useStyles = makeStyles({
 		flexDirection: "column",
 		alignItems: "center",
 		borderRight: `1px solid ${colors.secondary}`,
+		"@media (max-width: 1329px)": {
+			borderRight: "none",
+			borderBottom: `1px solid ${colors.secondary}`,
+			maxWidth: "100%",
+		},
 	},
 	controls: {
 		width: "87%",
@@ -24,6 +29,9 @@ const useStyles = makeStyles({
 				transform: "rotateY(180deg)",
 			},
 		},
+		"@media (max-width: 1329px)": {
+			maxWidth: 570,
+		},
 	},
 	slider: {
 		width: "100%",
@@ -32,6 +40,9 @@ const useStyles = makeStyles({
 		"& img": {
 			width: "80%",
 			padding: 20,
+			"@media (max-width: 1329px)": {
+				maxWidth: 420,
+			},
 		},
 	},
 	describe: {
@@ -44,6 +55,7 @@ const useStyles = makeStyles({
 			fontSize: 20,
 			fontWeight: 300,
 			padding: " 0 15px 30px 15px",
+			lineHeight: "26.6px",
 		},
 	},
 });
