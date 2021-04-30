@@ -4,3 +4,4 @@ export const PUSH_ITEM_CART = "PUSH_ITEM_CART";
 export const DEL_ITEM_CART = "DEL_ITEM_CART";
 export const COUNT_TOTAL = "COUNT_TOTAL";
 export const CHANGE_AMOUNT = "CHANGE_AMOUNT";
+export const SET_LOCATION = "SET_LOCATION";

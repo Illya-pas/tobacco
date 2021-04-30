@@ -5,11 +5,11 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import cartIcon from "../../theme/images/cart.svg";
 import { ClickAwayListener } from "@material-ui/core";
-// import { addToCart } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import CardInCart from "../itemCards/CardInCart";
 import CustomButton from "../menuItems/CustomButton";
 import { colors } from "../../theme/colors";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -60,8 +60,13 @@ const useStyles = makeStyles((theme) => ({
     overflow: "scroll",
     wodth: "fit-content",
     "&::-webkit-scrollbar": {
-      width: 0,
+      width: 5,
       height: 0,
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: colors.blackGrey,
+      borderRadius: "10px",
     },
   },
   notFound: {
@@ -94,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Cart() {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const history = useHistory();
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -162,7 +168,7 @@ export default function Cart() {
                     primary={colors.secondary}
                     secondary={colors.semiWhite}
                     text="Перейти до оформлення замовлення"
-                    action={() => console.log(cart, total)}
+                    action={() => history.push("/order")}
                     styles={buttonStyles}
                     enabled={false}
                   />

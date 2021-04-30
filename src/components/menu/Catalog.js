@@ -33,9 +33,10 @@ const useStyles = makeStyles((menuWidth) => ({
 
 export default function Catalog() {
   const menuWidth = useSelector((state) => state.app.menuWidth);
+  const currentPath = useSelector((state) => state.app.location);
   const classes = useStyles(menuWidth);
 
-  return (
+  return currentPath === "/order" ? null : (
     <div className={classes.root}>
       <Drawer
         className={classes.drawer}

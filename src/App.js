@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useEffect } from "react";
+import { Route, Switch, withRouter } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Main from "./pages/Main";
 import About from "./pages/About";
@@ -11,6 +11,9 @@ import { changeWidthMenu } from "./redux/actions";
 import Footer from "./components/footer/Footer";
 import Items from "./pages/Items";
 import Article from "./pages/Article";
+import Order from "./pages/Order";
+import { useDispatch } from "react-redux";
+import { changeLocation } from "./redux/actions";
 
 const useStyles = makeStyles({
 	root: {
@@ -37,32 +40,34 @@ const useStyles = makeStyles({
 	},
 });
 
-function App() {
+export default withRouter(function App({ location }) {
 	const classes = useStyles();
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(changeLocation(location.pathname));
+	}, [location]);
 
 	return (
 		<div className={classes.root}>
-			<Router>
-				<Header />
-				<div className={classes.container}>
-					<main className={classes.main}>
-						<Catalog />
-						<div id="content" className={classes.content}>
-							<Switch>
-								<Route exact path="/" component={Main} />
-								<Route exact path="/about" component={About} />
-								<Route exact path="/contacts" component={Contacts} />
-								<Route exact path="/feedbacks" component={Feedbacks} />
-								<Route path="/items" component={Items} />
-								<Route path="/article" component={Article} />
-							</Switch>
-						</div>
-					</main>
-				</div>
-				<Footer />
-			</Router>
+			<Header />
+			<div className={classes.container}>
+				<main className={classes.main}>
+					<Catalog />
+					<div id="content" className={classes.content}>
+						<Switch>
+							<Route exact path="/" component={Main} />
+							<Route exact path="/about" component={About} />
+							<Route exact path="/contacts" component={Contacts} />
+							<Route exact path="/feedbacks" component={Feedbacks} />
+							<Route path="/items" component={Items} />
+							<Route path="/article" component={Article} />
+							<Route exact path="/order" component={Order} />
+						</Switch>
+					</div>
+				</main>
+			</div>
+			<Footer />
 		</div>
 	);
-}
-
-export default App;
+});

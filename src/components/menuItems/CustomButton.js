@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((props) => ({
@@ -23,10 +23,10 @@ export default function CustomButton({
 	enabled,
 	open,
 }) {
-	const [props, setProps] = useState({
+	let props = {
 		color: secondary,
 		backgroundColor: primary,
-	});
+	};
 
 	const classes = useStyles(props);
 

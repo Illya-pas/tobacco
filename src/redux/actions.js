@@ -5,6 +5,7 @@ import {
 	DEL_ITEM_CART,
 	COUNT_TOTAL,
 	CHANGE_AMOUNT,
+	SET_LOCATION,
 } from "./types";
 
 // export const fetchItems = (itemsType) => {
@@ -64,5 +65,11 @@ export const delFromCart = (cart, index) => {
 		let counter = 0;
 		dispatch({ type: DEL_ITEM_CART, payload: index });
 		dispatch({ type: COUNT_TOTAL });
+	};
+};
+
+export const changeLocation = (location) => {
+	return async (dispatch) => {
+		dispatch({ type: SET_LOCATION, payload: location });
 	};
 };

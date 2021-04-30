@@ -7,18 +7,18 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { rootReducer } from "./redux/reducers/rootReducer";
 import App from "./App";
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
-const store = createStore(
-	rootReducer,
-	compose(
-		applyMiddleware(thunk),
-		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-	)
-);
+const history = createBrowserHistory();
+
+const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
 const app = (
 	<Provider store={store}>
-		<App />
+		<Router history={history}>
+			<App />
+		</Router>
 	</Provider>
 );
 

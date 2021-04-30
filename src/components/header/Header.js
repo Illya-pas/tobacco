@@ -60,6 +60,7 @@ export default function Header() {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const menuWidth = useSelector((state) => state.app.menuWidth);
+	const currentPath = useSelector((state) => state.app.location);
 
 	const openMenu = () => {
 		dispatch(changeWidthMenu(220));
@@ -76,7 +77,7 @@ export default function Header() {
 		fontFamily: "Open Sans Condensed",
 	};
 
-	return (
+	return currentPath === "/order" ? null : (
 		<header className={classes.header}>
 			<div className={classes.container}>
 				<div className={classes.headerPart}>

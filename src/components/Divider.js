@@ -10,8 +10,8 @@ const useStyles = makeStyles({
 	},
 });
 
-export default function Divider() {
+export default function Divider({ styles }) {
 	const classes = useStyles();
 
-	return <div className={classes.divider}></div>;
+	return <div style={styles} className={classes.divider}></div>;
 }
