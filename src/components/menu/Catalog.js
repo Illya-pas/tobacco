@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
@@ -6,6 +6,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { colors } from "../../theme/colors";
 import { useSelector } from "react-redux";
+import CatalogClass from "./components/CatalogClass";
+import { menuItems } from "./components/Filters";
 
 const useStyles = makeStyles((menuWidth) => ({
   root: {
@@ -15,6 +17,12 @@ const useStyles = makeStyles((menuWidth) => ({
     flexGrow: 1,
     maxWidth: (menuWidth) => menuWidth,
     transition: ".2s",
+    "@media (max-width: 870px)": {
+      position: "fixed",
+      zIndex: 10,
+      height: "100%",
+      top: 60,
+    },
   },
   hide: {
     display: "none",
@@ -24,10 +32,20 @@ const useStyles = makeStyles((menuWidth) => ({
     transition: ".2s",
   },
   drawerPaper: {
+    padding: 13,
     width: (menuWidth) => menuWidth,
     transition: ".2s",
     borderRight: `1px solid ${colors.secondary}`,
     position: "absolute",
+    "&::-webkit-scrollbar": {
+      width: 5,
+      height: 0,
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: colors.blackGrey,
+      borderRadius: "10px",
+    },
   },
 }));
 
@@ -48,10 +66,8 @@ export default function Catalog() {
         }}
       >
         <List>
-          {["Табак", "Витратники", "Сигари", "Аксесуари"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} />
-            </ListItem>
+          {menuItems.map((menuItem, index) => (
+            <CatalogClass index={index} key={index} menuItem={menuItem} />
           ))}
         </List>
       </Drawer>

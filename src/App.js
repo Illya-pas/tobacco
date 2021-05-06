@@ -22,6 +22,9 @@ const useStyles = makeStyles({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
+		"@media (max-width: 1300px)": {
+			paddingTop: 0,
+		},
 	},
 	container: {
 		flexGrow: 1,

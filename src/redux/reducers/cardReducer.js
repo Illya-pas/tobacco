@@ -1,4 +1,4 @@
-import { FETCH_CARDS } from "../types";
+import { FETCH_CARDS, ADD_FILTER, REMOVE_FILTER } from "../types";
 import cigarette1 from "../../theme/images/cigarette1.png";
 import noCigarette from "../../theme/images/no-cigarette.png";
 
@@ -347,7 +347,7 @@ const initialState = {
 		],
 	},
 	total: 0,
-	filters: null,
+	filters: [],
 	currentPage: 1,
 };
 
@@ -362,8 +362,14 @@ export const cardReducer = (state = initialState, action) => {
 		// case SET_CURRENT_PAGE:
 		// 	return {...state, currentPage: action.payload}
 
-		// case SET_FILTERS:
-		// 	return {...state, filters: action.payload}
+		case ADD_FILTER:
+			return { ...state, filters: state.filters.concat(action.payload) };
+
+		case REMOVE_FILTER:
+			let copyFilters = [...state.filters];
+			copyFilters.splice(action.payload, 1);
+			return { ...state, filters: copyFilters };
+
 		default:
 			return state;
 	}

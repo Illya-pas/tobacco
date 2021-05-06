@@ -9,11 +9,20 @@ const useStyles = makeStyles({
 		height: 200,
 		color: colors.secondary,
 		display: "flex",
-		// flexDirection: "column",
 		alignItems: "center",
 		marginTop: 40,
 		"& img": {
 			width: 200,
+			"@media (max-width: 900px)": {
+				width: 180,
+			},
+		},
+		"@media (max-width: 900px)": {
+			marginTop: 30,
+		},
+		"@media (max-width: 600px)": {
+			flexDirection: "column",
+			height: "fit-content",
 		},
 	},
 	cardDescribe: {
@@ -21,6 +30,12 @@ const useStyles = makeStyles({
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
+		"@media (max-width: 730px)": {
+			width: "100%",
+		},
+		"@media (max-width: 600px)": {
+			marginTop: 10,
+		},
 	},
 	cardInfo: {
 		backgroundColor: colors.primary,
@@ -33,6 +48,10 @@ const useStyles = makeStyles({
 			fontWeight: 600,
 			lineHeight: "30px",
 		},
+		"@media (max-width: 730px)": {
+			flexDirection: "column",
+			marginLeft: 15,
+		},
 	},
 	cardBuy: {
 		marginTop: 10,
@@ -44,6 +63,12 @@ const useStyles = makeStyles({
 		"& h5": {
 			fontSize: 40,
 			fontWeight: 400,
+			"@media (max-width: 730px)": {
+				fontSize: 36,
+			},
+			"@media (max-width: 600px)": {
+				fontSize: 32,
+			},
 		},
 		"& span": {
 			position: "absolute",
@@ -60,6 +85,22 @@ const useStyles = makeStyles({
 				color: colors.primary,
 				transition: ".2s",
 			},
+			"@media (max-width: 730px)": {
+				right: 7,
+				top: -130,
+			},
+			"@media (max-width: 600px)": {
+				top: -325,
+			},
+			"@media (max-width: 331px)": {
+				right: 7,
+				top: -354,
+			},
+		},
+		"@media (max-width: 730px)": {
+			width: "100%",
+			padding: 0,
+			justifyContent: "space-between",
 		},
 	},
 	noAvailable: {

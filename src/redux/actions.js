@@ -6,6 +6,8 @@ import {
 	COUNT_TOTAL,
 	CHANGE_AMOUNT,
 	SET_LOCATION,
+	ADD_FILTER,
+	REMOVE_FILTER,
 } from "./types";
 
 // export const fetchItems = (itemsType) => {
@@ -71,5 +73,17 @@ export const delFromCart = (cart, index) => {
 export const changeLocation = (location) => {
 	return async (dispatch) => {
 		dispatch({ type: SET_LOCATION, payload: location });
+	};
+};
+
+export const addFilter = (filterName) => {
+	return (dispatch) => {
+		dispatch({ type: ADD_FILTER, payload: filterName });
+	};
+};
+
+export const removeFilter = (filterIndex) => {
+	return (dispatch) => {
+		dispatch({ type: REMOVE_FILTER, payload: filterIndex });
 	};
 };

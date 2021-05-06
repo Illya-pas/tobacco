@@ -1,7 +1,7 @@
 import { MENU_WIDTH, SET_LOCATION } from "../types";
 
 const initialState = {
-	menuWidth: 220,
+	menuWidth: window.innerWidth > 870 ? 220 : 0,
 	location: "",
 };
 

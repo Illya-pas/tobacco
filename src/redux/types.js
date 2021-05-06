@@ -5,3 +5,5 @@ export const DEL_ITEM_CART = "DEL_ITEM_CART";
 export const COUNT_TOTAL = "COUNT_TOTAL";
 export const CHANGE_AMOUNT = "CHANGE_AMOUNT";
 export const SET_LOCATION = "SET_LOCATION";
+export const ADD_FILTER = "ADD_FILTER";
+export const REMOVE_FILTER = "REMOVE_FILTER";

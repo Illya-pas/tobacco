@@ -17,6 +17,13 @@ const useStyles = makeStyles({
 			fontFamily: "Open Sans Condensed",
 			textAlign: "center",
 			fontSize: 54,
+			"@media (max-width: 870px)": {
+				padding: "30px 0",
+				fontSize: 48,
+			},
+		},
+		"@media (max-width: 870px)": {
+			margin: 10,
 		},
 	},
 	form: {
@@ -32,14 +39,18 @@ const useStyles = makeStyles({
 		border: `1px solid ${colors.secondary}`,
 		margin: 20,
 		height: "fit-content",
-		"@media (max-width: 1330px)": {
-			marginLeft: "5%",
-		},
 		"& h2": {
 			fontSize: 35,
 			fontWeight: 600,
 			padding: 30,
 			textAlign: "center",
+		},
+		"@media (max-width: 1330px)": {
+			marginLeft: "5%",
+		},
+		"@media (max-width: 870px)": {
+			margin: 0,
+			width: "100%",
 		},
 	},
 	cartItems: {
@@ -54,6 +65,9 @@ const useStyles = makeStyles({
 		"&::-webkit-scrollbar-thumb": {
 			background: colors.blackGrey,
 			borderRadius: "10px",
+		},
+		"@media (max-width: 870px)": {
+			margin: "0 10px 20px 10px",
 		},
 	},
 	notFound: {
@@ -71,6 +85,11 @@ const useStyles = makeStyles({
 	mainForm: {
 		width: "35%",
 		marginLeft: "5%",
+		"@media (max-width: 870px)": {
+			width: "100%",
+			maxWidth: 600,
+			marginLeft: 0,
+		},
 	},
 	userInfo: {
 		"& h3": {
@@ -89,6 +108,12 @@ const useStyles = makeStyles({
 			fontWeight: 300,
 			fontSize: 20,
 			padding: 5,
+			"@media (max-width: 442px)": {
+				width: "100%",
+			},
+		},
+		"@media (max-width: 870px)": {
+			marginLeft: 0,
 		},
 	},
 	formTotal: {
@@ -98,6 +123,9 @@ const useStyles = makeStyles({
 			fontSize: 36,
 			"&:last-child": {
 				marginLeft: "10%",
+			},
+			"@media (max-width: 442px)": {
+				fontSize: 32,
 			},
 		},
 	},
@@ -110,6 +138,9 @@ const useStyles = makeStyles({
 		fontWeight: 700,
 		fontSize: 36,
 		margin: "50px 0",
+		"@media (max-width: 442px)": {
+			fontSize: 32,
+		},
 	},
 });
 
@@ -121,7 +152,7 @@ export default function Order() {
 	const paymenntChilds = ["Карта приватбанк", "Наложений платіж"];
 	const deliveryChilds = ["Нова пошта", "Самовивіз"];
 
-	const { handleSubmit, control, setValue, register } = useForm();
+	const { handleSubmit, control, setValue } = useForm();
 
 	const onSubmit = (data) => {
 		console.log(data);

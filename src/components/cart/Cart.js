@@ -43,15 +43,41 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     height: "fit-content",
-    "@media (max-width: 1300px)": {
-      marginTop: 160,
-    },
     "& h1": {
       width: "fit-content",
       margin: 40,
       marginBottom: 20,
       fontFamily: "Open Sans Condensed",
       fontSize: 54,
+      "@media (max-width: 900px)": {
+        margin: 20,
+        fontSize: 44,
+      },
+    },
+    "@media (max-width: 1300px)": {
+      marginTop: 70,
+    },
+    "@media (max-width: 900px)": {
+      width: "100%",
+      margin: 0,
+      height: "100%",
+    },
+  },
+  paperHeader: {
+    display: "flex",
+    position: "relative",
+    "& span": {
+      fontSize: "55px",
+      color: "#bb1c1c",
+      position: "absolute",
+      right: 30,
+      top: 30,
+      cursor: "pointer",
+      "@media (max-width: 900px)": {
+        right: 10,
+        top: 10,
+        fontSize: 50,
+      },
     },
   },
   cartItems: {
@@ -67,6 +93,13 @@ const useStyles = makeStyles((theme) => ({
     "&::-webkit-scrollbar-thumb": {
       background: colors.blackGrey,
       borderRadius: "10px",
+    },
+    "@media (max-width: 900px)": {
+      flexGrow: 1,
+      maxHeight: "100%",
+    },
+    "@media (max-width: 600px)": {
+      margin: "0 5px",
     },
   },
   notFound: {
@@ -88,10 +121,32 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "space-between",
       fontSize: 30,
       padding: 20,
+      "@media (max-width: 900px)": {
+        paddingTop: 0,
+      },
+      "@media (max-width: 511px)": {
+        flexDirection: "column",
+        fontSize: 28,
+        paddingTop: 0,
+      },
     },
     "& h5": {
       fontSize: 40,
       fontWeight: 400,
+    },
+    "& button": {
+      fontWeight: 700,
+      fontFamily: "Open Sans Condensed",
+      fontSize: 36,
+      lineHeight: "50px",
+      width: "100%",
+      border: "1px solid #FFFDFD",
+      "@media (max-width: 900px)": {
+        fontSize: 30,
+      },
+    },
+    "@media (max-width: 900px)": {
+      padding: 15,
     },
   },
 }));
@@ -101,6 +156,7 @@ export default function Cart() {
   const classes = useStyles();
   const history = useHistory();
   const [open, setOpen] = useState(false);
+  const [shortCart, setShortCart] = useState(false);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -109,20 +165,15 @@ export default function Cart() {
   const cart = useSelector((state) => state.cart.cart);
   const total = useSelector((state) => state.cart.total);
 
-  let buttonStyles = {
-    fontWeight: 700,
-    fontFamily: "Open Sans Condensed",
-    fontSize: 36,
-    lineHeight: "50px",
-    width: "100%",
-    border: "1px solid #FFFDFD",
-  };
+  window.addEventListener("resize", () => {
+    window.innerWidth < 390 ? setShortCart(true) : setShortCart(false);
+  });
 
   return (
     <div>
       <button className={classes.cartButton} type="button" onClick={handleOpen}>
         <img src={cartIcon} alt="cart" />
-        <p>Корзина</p>
+        {!shortCart && <p>Корзина</p>}
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -143,7 +194,10 @@ export default function Cart() {
           <Fade in={open}>
             <ClickAwayListener onClickAway={handleOpen}>
               <div className={classes.paper}>
-                <h1>Корзина</h1>
+                <div className={classes.paperHeader}>
+                  <h1>Корзина</h1>
+                  <span onClick={handleOpen}>&#10005;</span>
+                </div>
                 <div className={classes.cartItems}>
                   {cart[0] ? (
                     cart.map((cartItem, index) => {
@@ -169,7 +223,6 @@ export default function Cart() {
                     secondary={colors.semiWhite}
                     text="Перейти до оформлення замовлення"
                     action={() => history.push("/order")}
-                    styles={buttonStyles}
                     enabled={false}
                   />
                 </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 
 const useStyles = makeStyles((props) => ({
 	button: {
@@ -31,8 +32,8 @@ export default function CustomButton({
 	const classes = useStyles(props);
 
 	return (
-		<span className={classes.button} onClick={action} style={styles}>
+		<button className={classes.button} onClick={action} style={styles}>
 			{text}
-		</span>
+		</button>
 	);
 }

@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 import MainCard from "../components/itemCards/MainCard";
+import CustomButton from "../components/menuItems/CustomButton";
+import { colors } from "../theme/colors";
+
+const normalSize = {
+	cardSize: 304,
+	cardMargin: 50,
+	arowLength: 120,
+	arrowSize: 100,
+	describeSize: 16,
+	buttonSize: 20,
+	priceSize: 25,
+};
 
 const useStyles = makeStyles({
 	root: {
@@ -11,17 +23,38 @@ const useStyles = makeStyles({
 			marginTop: 50,
 			fontFamily: "Open Sans Condensed",
 			fontSize: 54,
+			"@media (max-width: 870px)": {
+				marginTop: 30,
+			},
 		},
 	},
 	main: {
 		display: "flex",
+		justifyContent: "center",
+		padding: "0 20px",
 		flexWrap: "wrap",
 		marginBottom: 70,
+		marginLeft: -50,
 	},
 	notFound: {
 		fontSize: 50,
 		textAlign: "center",
 		width: "100%",
+	},
+	buttonMore: {
+		display: "flex",
+		justifyContent: "center",
+		marginBottom: 60,
+		"& button": {
+			fontFamily: "Open Sans Condensed",
+			color: colors.primary,
+			backgroundColor: colors.secondary,
+			padding: 15,
+			fontSize: 24,
+			width: "100%",
+			maxWidth: 400,
+			height: 70,
+		},
 	},
 });
 
@@ -47,9 +80,7 @@ export default function Feedbacks() {
 		currentName = "Аксесуари";
 	}
 
-	let cardStyles = {
-		marginTop: 70,
-	};
+	const [allRendered, setAllRendered] = useState(false);
 
 	return (
 		<div className={classes.root}>
@@ -59,9 +90,10 @@ export default function Feedbacks() {
 					currentItemList.map((currentItem, index) => {
 						return (
 							<MainCard
-								styles={cardStyles}
+								itemsMargin={true}
 								key={index}
 								itemCard={currentItem}
+								currentSize={normalSize}
 							/>
 						);
 					})
@@ -69,6 +101,11 @@ export default function Feedbacks() {
 					<div className={classes.notFound}>NOT FOUND</div>
 				)}
 			</div>
+			{currentItemList && !allRendered ? (
+				<div className={classes.buttonMore}>
+					<button>ПОБАЧИТИ БІЛЬШЕ</button>
+				</div>
+			) : null}
 		</div>
 	);
 }

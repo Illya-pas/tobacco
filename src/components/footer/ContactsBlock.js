@@ -13,6 +13,9 @@ const useStyles = makeStyles({
 			flexDirection: "column",
 			alignItems: "center",
 		},
+		"@media (max-width: 680px)": {
+			margin: 20,
+		},
 	},
 	leftContacts: {
 		margin: "0 120px 65px 0",
@@ -20,12 +23,22 @@ const useStyles = makeStyles({
 			fontFamily: "Open Sans Condensed",
 			fontSize: 54,
 			marginBottom: 30,
+			"@media (max-width: 680px)": {
+				textAlign: "center",
+			},
 		},
 		"& div": {
 			marginLeft: 40,
 			fontSize: 40,
 			lineHeight: "53.2px",
 			color: colors.blackGrey,
+			"@media (max-width: 680px)": {
+				fontSize: 30,
+				marginLeft: 0,
+			},
+		},
+		"@media (max-width: 680px)": {
+			margin: "0 0 35px 0",
 		},
 	},
 	rightContacts: {
@@ -37,7 +50,26 @@ const useStyles = makeStyles({
 			"& span": {
 				fontSize: 35,
 				lineHeight: "46.55px",
+				"@media (max-width: 680px)": {
+					fontSize: 30,
+					marginLeft: 20,
+				},
 			},
+			"@media (max-width: 680px)": {
+				justifyContent: "flex-start",
+			},
+		},
+		"& iframe": {
+			"@media (max-width: 680px)": {
+				width: 310,
+				height: 220,
+				justifyContent: "flex-start",
+			},
+		},
+		display: "flex",
+		flexDirection: "column",
+		"@media (max-width: 680px)": {
+			alignItems: "center",
 		},
 	},
 });

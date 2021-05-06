@@ -11,16 +11,14 @@ const useStyles = makeStyles({
 		padding: 10,
 		color: colors.blackGrey,
 		width: "100%",
-		transition: "width .3s",
+		transition: "max-width .3s",
 		"&::placeholder": {
 			color: colors.blackGrey,
 		},
 	},
 	focused: {
-		"&:focus": {
-			maxWidth: 280,
-			transition: "width .3s",
-		},
+		maxWidth: "280px !important",
+		transition: "max-width .3s",
 	},
 });
 
@@ -30,7 +28,7 @@ export default function ControlInput({
 	styles,
 	Controller,
 	control,
-	rubber,
+	searchFocused,
 }) {
 	const classes = useStyles();
 
@@ -42,7 +40,7 @@ export default function ControlInput({
 			render={({ field }) => (
 				<input
 					style={styles}
-					className={clsx(classes.input, rubber && classes.focused)}
+					className={clsx(classes.input, searchFocused && classes.focused)}
 					placeholder={text}
 					{...field}
 				/>

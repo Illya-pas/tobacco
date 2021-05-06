@@ -13,6 +13,12 @@ const useStyles = makeStyles({
 			fontSize: 28,
 			lineHeight: "45px",
 			textAlign: "justify",
+			"@media (max-width: 870px)": {
+				fontSize: 24,
+			},
+		},
+		"@media (max-width: 870px)": {
+			margin: "30px",
 		},
 	},
 });

@@ -46,10 +46,10 @@ const useStyles = makeStyles({
 		width: "100%",
 		maxWidth: 500,
 		justifyContent: "space-between",
-		// "@media (max-width: 1300px)": {
-		// 	flexDirection: "column",
-		// 	alignItems: "flex-start",
-		// },
+		"@media (max-width: 500px)": {
+			flexDirection: "column",
+			alignItems: "flex-start",
+		},
 		"& h2": {
 			minWidth: 204,
 			fontSize: 30,
@@ -61,6 +61,9 @@ const useStyles = makeStyles({
 		display: "flex",
 		flexDirection: "column",
 		padding: 35,
+		"@media (max-width: 500px)": {
+			padding: "35px 20px",
+		},
 	},
 	characteristicsInfo: {
 		display: "flex",
@@ -68,14 +71,27 @@ const useStyles = makeStyles({
 		lineHeight: "26.6px",
 	},
 	characteristicsLeft: {
+		"& div": {
+			display: "flex",
+			justifyContent: "space-between",
+			width: 500,
+			"@media (max-width: 570px)": {
+				width: 280,
+				flexDirection: "column",
+				alignItems: "flex-start",
+			},
+		},
 		"& h4": {
 			fontWeight: 600,
+			width: "50%",
+			"@media (max-width: 570px)": {
+				width: "100%",
+			},
 		},
-	},
-	characteristicsRight: {
-		marginLeft: 35,
-		"& h4": {
+		"& span": {
+			marginLeft: 20,
 			fontWeight: 300,
+			flexGrow: 1,
 		},
 	},
 });
@@ -163,12 +179,12 @@ export default function Article() {
 					<div className={classes.characteristicsInfo}>
 						<div className={classes.characteristicsLeft}>
 							{characteristics.map((characteristic, index) => {
-								return <h4 key={index}>{characteristic.title}</h4>;
-							})}
-						</div>
-						<div className={classes.characteristicsRight}>
-							{characteristics.map((characteristic, index) => {
-								return <h4 key={index}>{characteristic.value}</h4>;
+								return (
+									<div key={index}>
+										<h4>{characteristic.title}</h4>
+										<span>{characteristic.value}</span>
+									</div>
+								);
 							})}
 						</div>
 					</div>

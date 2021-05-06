@@ -19,6 +19,15 @@ const useStyles = makeStyles({
 			fontFamily: "Open Sans Condensed",
 			fontSize: 54,
 			marginBottom: 30,
+			"@media (max-width: 870px)": {
+				marginLeft: 0,
+			},
+		},
+		"@media (max-width: 870px)": {
+			margin: "30px 0",
+			display: "flex",
+			flexDirection: "column",
+			alignItems: "center",
 		},
 	},
 });
