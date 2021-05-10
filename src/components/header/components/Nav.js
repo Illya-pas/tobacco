@@ -17,7 +17,6 @@ const useStyles = makeStyles({
 		"@media (max-width: 870px)": {
 			flexDirection: "column",
 			position: "fixed",
-			zIndex: 10,
 			top: 60,
 			right: 0,
 			border: `1px solid ${colors.secondary}`,

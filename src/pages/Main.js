@@ -6,6 +6,7 @@ import ContactsBlock from "../components/footer/ContactsBlock";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { colors } from "../theme/colors";
+import { normalSize } from "../components/itemCards/CarouselSize";
 
 const useStyles = makeStyles({
 	itemGroup: {
@@ -76,7 +77,7 @@ export default function Main() {
 							<h1>
 								<NavLink to={carousel.link}>{carousel.name}</NavLink>
 							</h1>
-							<Carousel escalator={carousel} />
+							<Carousel escalator={carousel} size={normalSize} />
 						</div>
 						<Divider />
 					</div>

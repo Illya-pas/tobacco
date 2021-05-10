@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     backgroundColor: "initial",
+    position: "relative",
     "& p": {
       paddingLeft: 10,
       fontSize: 20,
@@ -149,6 +150,20 @@ const useStyles = makeStyles((theme) => ({
       padding: 15,
     },
   },
+  amountCart: {
+    fontSize: 14,
+    position: "absolute",
+    top: -14,
+    left: 23,
+    borderRadius: "50%",
+    width: 30,
+    height: 30,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "yellow",
+    fontWeight: 700,
+  },
 }));
 
 export default function Cart() {
@@ -164,6 +179,7 @@ export default function Cart() {
 
   const cart = useSelector((state) => state.cart.cart);
   const total = useSelector((state) => state.cart.total);
+  const amount = useSelector((state) => state.cart.amount);
 
   window.addEventListener("resize", () => {
     window.innerWidth < 390 ? setShortCart(true) : setShortCart(false);
@@ -174,6 +190,11 @@ export default function Cart() {
       <button className={classes.cartButton} type="button" onClick={handleOpen}>
         <img src={cartIcon} alt="cart" />
         {!shortCart && <p>Корзина</p>}
+        {amount ? (
+          <div className={classes.amountCart}>
+            {amount > 99 ? "99..." : amount}
+          </div>
+        ) : null}
       </button>
       <Modal
         aria-labelledby="transition-modal-title"

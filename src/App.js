@@ -14,6 +14,7 @@ import Article from "./pages/Article";
 import Order from "./pages/Order";
 import { useDispatch } from "react-redux";
 import { changeLocation } from "./redux/actions";
+import FooterCarousel from "./components/footer/FooterCarousel";
 
 const useStyles = makeStyles({
 	root: {
@@ -74,3 +75,5 @@ export default withRouter(function App({ location }) {
 		</div>
 	);
 });
+
+// <FooterCarousel />

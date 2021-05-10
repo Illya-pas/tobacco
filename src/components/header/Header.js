@@ -73,9 +73,9 @@ const useStyles = makeStyles({
 		},
 	},
 	cart: {
-		padding: "5px 42px 5px 20px",
+		padding: "10px 42px 5px 20px",
 		"@media (max-width: 430px)": {
-			padding: "5px 15px",
+			padding: "10px 15px",
 		},
 	},
 });

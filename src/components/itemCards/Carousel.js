@@ -7,28 +7,6 @@ import rightArrowWhite from "../../theme/images/right-arrow-white.svg";
 import rightArrowBlack from "../../theme/images/right-arrow.svg";
 import clsx from "clsx";
 
-const normalSize = {
-	cardSize: 304,
-	cardMargin: 50,
-	arowLength: 120,
-	arrowSize: 100,
-	describeSize: 16,
-	buttonSize: 20,
-	priceSize: 25,
-	blackArrow: false,
-};
-
-const littleSize = {
-	cardSize: 250,
-	cardMargin: 30,
-	arowLength: 120,
-	arrowSize: 85,
-	describeSize: 14,
-	buttonSize: 16,
-	priceSize: 20,
-	blackArrow: true,
-};
-
 const useStyles = makeStyles((props) => ({
 	root: {
 		height: "fit-content",
@@ -65,7 +43,7 @@ const useStyles = makeStyles((props) => ({
 		borderRadius: "50%",
 		cursor: "pointer",
 		"@media (max-width: 870px)": {
-			width: littleSize.arrowSize,
+			width: 85,
 			right: "initial",
 			bottom: 0,
 			marginLeft: 50,
@@ -84,7 +62,7 @@ export default function Carousel({ escalator, size }) {
 
 	const [translateX, setTranslateX] = useState(0);
 	const [carouselWidth, setCarouselWidth] = useState(0);
-	const [currentSize, setCurrentSize] = useState(normalSize);
+	const [currentSize, setCurrentSize] = useState(size);
 	const [slider, setSlider] = useState({});
 
 	let cardLength = currentSize.cardSize + currentSize.cardMargin;
@@ -92,7 +70,6 @@ export default function Carousel({ escalator, size }) {
 	const menuSize = 220;
 
 	const setWidth = (callFromMenu) => {
-		// contentWidth - with delay from menuWidth call
 		let menu = 0;
 		if (callFromMenu) {
 			if (window.innerWidth > 870) {
@@ -104,13 +81,18 @@ export default function Carousel({ escalator, size }) {
 		let counter = 0;
 		let contentWidth;
 
-		window.innerWidth > 475
-			? (contentWidth = content.clientWidth - currentSize.arowLength + menu)
-			: (contentWidth = 400);
+		if (currentSize.cardSize < 300) {
+			contentWidth = window.innerWidth - currentSize.arowLength;
+		} else {
+			window.innerWidth > 475
+				? (contentWidth = content.clientWidth - currentSize.arowLength + menu)
+				: (contentWidth = 400);
+		}
 
 		while (true) {
 			contentWidth -= cardLength;
 			if (contentWidth > 0) {
+				// counter < 3 && counter++;
 				counter++;
 			} else {
 				break;
