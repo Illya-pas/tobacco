@@ -23,6 +23,7 @@ const useStyles = makeStyles({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
+		cursor: "default",
 		"@media (max-width: 1300px)": {
 			paddingTop: 0,
 		},
@@ -70,6 +71,7 @@ export default withRouter(function App({ location }) {
 						</Switch>
 					</div>
 				</main>
+				<FooterCarousel />
 			</div>
 			<Footer />
 		</div>

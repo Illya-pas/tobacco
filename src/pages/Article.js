@@ -7,9 +7,10 @@ import { colors } from "../theme/colors";
 import { addToCart } from "../redux/actions";
 import Divider from "../components/Divider";
 import CustomTabs from "../components/otherComponents/CustomTabs";
+import Comments from "../components/otherComponents/Comments";
 
 const useStyles = makeStyles({
-	root: {
+	main: {
 		display: "flex",
 		borderBottom: `1px solid ${colors.secondary}`,
 		"@media (max-width: 1329px)": {
@@ -27,6 +28,9 @@ const useStyles = makeStyles({
 	},
 	itemInfo: {
 		padding: 35,
+		"@media (max-width: 600px)": {
+			padding: 15,
+		},
 	},
 	itemId: {
 		fontWeight: 300,
@@ -143,57 +147,60 @@ export default function Article() {
 
 	return (
 		<div className={classes.root}>
-			<ItemSlider item={item} />
-			<div className={classes.info}>
-				<div className={classes.itemInfo}>
-					<h3>
-						{item.type} <br /> {item.name}
-					</h3>
-					<div className={classes.itemId}>
-						{item.available ? (
-							<span style={{ color: "green" }}>В наявності</span>
-						) : (
-							<span style={{ color: "red" }}>Немає в наявності</span>
-						)}
-						<p>Артикул: {item.id}</p>
-					</div>
-					<div className={classes.itemPrice}>
-						<div>
-							<h2>{item.price} грн/шт</h2>
-							<h2>{item.price * 10} грн/блок</h2>
+			<div className={classes.main}>
+				<ItemSlider item={item} />
+				<div className={classes.info}>
+					<div className={classes.itemInfo}>
+						<h3>
+							{item.type} <br /> {item.name}
+						</h3>
+						<div className={classes.itemId}>
+							{item.available ? (
+								<span style={{ color: "green" }}>В наявності</span>
+							) : (
+								<span style={{ color: "red" }}>Немає в наявності</span>
+							)}
+							<p>Артикул: {item.id}</p>
 						</div>
-						<CustomButton
-							primary={colors.secondary}
-							secondary={colors.primary}
-							text="КУПИТИ"
-							action={() => dispatch(addToCart(item, cart))}
-							styles={buttonStyles}
-						/>
-					</div>
-				</div>
-
-				<Divider />
-
-				<div className={classes.characteristics}>
-					<h3>Характеристики</h3>
-					<div className={classes.characteristicsInfo}>
-						<div className={classes.characteristicsLeft}>
-							{characteristics.map((characteristic, index) => {
-								return (
-									<div key={index}>
-										<h4>{characteristic.title}</h4>
-										<span>{characteristic.value}</span>
-									</div>
-								);
-							})}
+						<div className={classes.itemPrice}>
+							<div>
+								<h2>{item.price} грн/шт</h2>
+								<h2>{item.price * 10} грн/блок</h2>
+							</div>
+							<CustomButton
+								primary={colors.secondary}
+								secondary={colors.primary}
+								text="КУПИТИ"
+								action={() => dispatch(addToCart(item, cart))}
+								styles={buttonStyles}
+							/>
 						</div>
 					</div>
+
+					<Divider />
+
+					<div className={classes.characteristics}>
+						<h3>Характеристики</h3>
+						<div className={classes.characteristicsInfo}>
+							<div className={classes.characteristicsLeft}>
+								{characteristics.map((characteristic, index) => {
+									return (
+										<div key={index}>
+											<h4>{characteristic.title}</h4>
+											<span>{characteristic.value}</span>
+										</div>
+									);
+								})}
+							</div>
+						</div>
+					</div>
+
+					<Divider />
+
+					<CustomTabs />
 				</div>
-
-				<Divider />
-
-				<CustomTabs />
 			</div>
+			<Comments />
 		</div>
 	);
 }

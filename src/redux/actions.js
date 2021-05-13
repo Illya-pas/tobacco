@@ -1,3 +1,4 @@
+import { post } from "./apiCalls";
 import {
 	FETCH_CARDS,
 	MENU_WIDTH,
@@ -10,11 +11,22 @@ import {
 	REMOVE_FILTER,
 } from "./types";
 
-// export const fetchItems = (itemsType) => {
-// 	return async (dispatch) => {
-// 		dispatch({ type: FETCH_CARDS, payload: {} });
-// 	};
-// };
+// itemsType
+export const fetchItems = () => {
+	return async (dispatch) => {
+		// dispatch({ type: FETCH_CARDS, payload: {} });
+		let query = `query{
+			filterHilzy{
+				hilzy{
+					id,
+					brand
+				}
+			}
+		}`;
+
+		post(query);
+	};
+};
 
 export const changeWidthMenu = (menuWidth) => {
 	return (dispatch) => {

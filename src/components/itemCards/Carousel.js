@@ -18,8 +18,8 @@ const useStyles = makeStyles((props) => ({
 		"@media (max-width: 870px)": {
 			width: props.carouselWidth,
 			flexDirection: "column",
-			height: 500,
-			marginLeft: -50,
+			height: (props) => props.currentSize.mediaHeight,
+			marginLeft: (props) => -props.currentSize.cardMargin,
 			maxWidth: 300,
 		},
 	},
@@ -64,6 +64,7 @@ export default function Carousel({ escalator, size }) {
 	const [carouselWidth, setCarouselWidth] = useState(0);
 	const [currentSize, setCurrentSize] = useState(size);
 	const [slider, setSlider] = useState({});
+	const [showArrow, setShowArrow] = useState(true);
 
 	let cardLength = currentSize.cardSize + currentSize.cardMargin;
 
@@ -82,7 +83,9 @@ export default function Carousel({ escalator, size }) {
 		let contentWidth;
 
 		if (currentSize.cardSize < 300) {
-			contentWidth = window.innerWidth - currentSize.arowLength;
+			window.innerWidth > 475
+				? (contentWidth = window.innerWidth - currentSize.arowLength)
+				: (contentWidth = 300);
 		} else {
 			window.innerWidth > 475
 				? (contentWidth = content.clientWidth - currentSize.arowLength + menu)
@@ -95,6 +98,9 @@ export default function Carousel({ escalator, size }) {
 				// counter < 3 && counter++;
 				counter++;
 			} else {
+				escalator.type.length < counter
+					? setShowArrow(false)
+					: setShowArrow(true);
 				break;
 			}
 		}
@@ -139,15 +145,17 @@ export default function Carousel({ escalator, size }) {
 					})}
 				</div>
 			</div>
-			<img
-				className={clsx(
-					classes.arrow,
-					currentSize.blackArrow ? classes.blackArrow : classes.whiteArrow
-				)}
-				src={currentSize.blackArrow ? rightArrowBlack : rightArrowWhite}
-				alt="right-arrow"
-				onClick={rollCarousel}
-			/>
+			{!showArrow ? null : (
+				<img
+					className={clsx(
+						classes.arrow,
+						currentSize.blackArrow ? classes.blackArrow : classes.whiteArrow
+					)}
+					src={currentSize.blackArrow ? rightArrowBlack : rightArrowWhite}
+					alt="right-arrow"
+					onClick={rollCarousel}
+				/>
+			)}
 		</div>
 	);
 }

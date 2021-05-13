@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "../itemCards/Carousel";
 import { littleSize } from "../itemCards/CarouselSize";
 import { useSelector } from "react-redux";
@@ -18,26 +18,48 @@ const useStyles = makeStyles({
 			width: "100%",
 			display: "flex !important",
 			justifyContent: "flex-start",
+			fontWeight: 700,
+			fontSize: 25,
+			padding: "0 0 40px 35px",
+			fontFamily: "Open Sans Condensed",
+			"@media (max-width: 365px)": {
+				padding: "0 0 30px 0",
+			},
+		},
+		"@media (max-width: 365px)": {
+			padding: "25px 15px",
 		},
 	},
 });
 
 export default function FooterCarousel() {
 	const classes = useStyles();
+	const [showWatched, setShowWatched] = useState(false);
 
 	const tobaccos = useSelector((state) => state.cards.cards.tobacco);
+	const locate = useSelector((state) => state.app.location);
+
+	useEffect(() => {
+		locate.includes("items") || locate.includes("article")
+			? setShowWatched(true)
+			: setShowWatched(false);
+	}, [locate]);
 
 	const carousel = {
 		name: "Табак",
-		id: "tobacco-carousel",
+		id: "watched-carousel",
 		type: tobaccos,
 		link: "/items/tobacco",
 	};
 
 	return (
-		<div className={classes.footerCarousel}>
-			<h1>Товари, які Ви перешлянули</h1>
-			<Carousel escalator={carousel} size={littleSize} />
-		</div>
+		<>
+			{!showWatched ? null : (
+				<div className={classes.footerCarousel}>
+					<h1>Товари, які Ви переглянули</h1>
+					<Carousel escalator={carousel} size={littleSize} />
+				</div>
+			)}
+		</>
 	);
 }

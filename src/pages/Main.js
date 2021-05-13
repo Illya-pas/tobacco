@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Carousel from "../components/itemCards/Carousel";
 import Divider from "../components/Divider";
 import ContactsBlock from "../components/footer/ContactsBlock";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { colors } from "../theme/colors";
 import { normalSize } from "../components/itemCards/CarouselSize";
+import { fetchItems } from "../redux/actions";
 
 const useStyles = makeStyles({
 	itemGroup: {
@@ -35,11 +36,16 @@ const useStyles = makeStyles({
 
 export default function Main() {
 	const classes = useStyles();
+	const dispatch = useDispatch();
 
 	const tobaccos = useSelector((state) => state.cards.cards.tobacco);
 	const consumables = useSelector((state) => state.cards.cards.consumables);
 	const cigarettes = useSelector((state) => state.cards.cards.cigarettes);
 	const accessories = useSelector((state) => state.cards.cards.accessories);
+
+	useEffect(() => {
+		dispatch(fetchItems());
+	}, []);
 
 	const carousels = [
 		{
