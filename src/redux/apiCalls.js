@@ -2,8 +2,6 @@ const URL = "http://api.imperiaua.com.ua/graphql/";
 
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("mode", "no-cors");
-myHeaders.append("credentials", "same-origin");
 
 export const post = async (query) => {
 	let graphql = JSON.stringify({
