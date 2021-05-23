@@ -11,6 +11,7 @@ import { changeWidthMenu } from "../../redux/actions";
 import { useForm, Controller } from "react-hook-form";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import clsx from "clsx";
+import { fetchItems } from "../../redux/actions";
 
 const headerHeight = 60;
 
@@ -122,7 +123,32 @@ export default function Header() {
 	};
 
 	const searchRequest = (data) => {
-		console.log(data);
+		// console.log(data.search);
+		const search = true;
+
+		let filterByName = `(name: "${data.search}")`;
+		let filterByBrand = `(brand: "${data.search}")`;
+		let filterByProducer = `(producer: "${data.search}")`;
+
+		// dispatch(fetchItems("paper", filterByName));
+		dispatch(fetchItems("paper", filterByBrand, search));
+		dispatch(fetchItems("paper", filterByProducer, search));
+
+		// dispatch(fetchItems("hilzy", filterByName));
+		dispatch(fetchItems("hilzy", filterByBrand, search));
+		dispatch(fetchItems("hilzy", filterByProducer, search));
+
+		// dispatch(fetchItems("filter", filterByName));
+		dispatch(fetchItems("filter", filterByBrand, search));
+		dispatch(fetchItems("filter", filterByProducer, search));
+
+		// dispatch(fetchItems("aroma", filterByName));
+		dispatch(fetchItems("aroma", filterByBrand, search));
+		dispatch(fetchItems("aroma", filterByProducer, search));
+
+		// dispatch(fetchItems("mashine", filterByName));
+		dispatch(fetchItems("mashine", filterByBrand, search));
+		dispatch(fetchItems("mashine", filterByProducer, search));
 	};
 
 	return currentPath === "/order" ? null : (

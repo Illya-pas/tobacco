@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MainCard from "../components/itemCards/MainCard";
 import CustomButton from "../components/menuItems/CustomButton";
 import { colors } from "../theme/colors";
+import { fetchItems } from "../redux/actions";
+import { sorting } from "../components/menu/components/Sorting";
 
 const normalSize = {
 	cardSize: 304,
@@ -59,28 +61,51 @@ const useStyles = makeStyles({
 });
 
 export default function Feedbacks() {
+	let currentLocation = useSelector((state) => state.app.location);
+	let allFilters = useSelector((state) => state.cards.filters);
 	let splitedHref = window.location.href.split("/");
 	let currentItems = splitedHref[splitedHref.length - 1];
+	const dispatch = useDispatch();
 
 	const classes = useStyles();
 	let currentItemList = null;
 	let currentName = "";
+	let currentFilters;
 
-	if (currentItems === "tobacco") {
-		currentItemList = useSelector((state) => state.cards.cards.tobacco);
-		currentName = "Табак";
-	} else if (currentItems === "consumables") {
-		currentItemList = useSelector((state) => state.cards.cards.consumables);
-		currentName = "Витратники";
-	} else if (currentItems === "cigarettes") {
-		currentItemList = useSelector((state) => state.cards.cards.cigarettes);
-		currentName = "Сигари";
-	} else if (currentItems === "accessories") {
-		currentItemList = useSelector((state) => state.cards.cards.accessories);
-		currentName = "Аксесуари";
+	useEffect(() => {
+		dispatch(fetchItems(currentItems));
+	}, [currentLocation]);
+
+	if (currentItems === "paper") {
+		currentItemList = useSelector((state) => state.cards.paper);
+		currentName = "Бумага";
+
+		currentFilters = allFilters.filter((filtr) => filtr.name === "paper");
+	} else if (currentItems === "hilzy") {
+		currentItemList = useSelector((state) => state.cards.hilzy);
+		currentName = "Гільзи";
+
+		currentFilters = allFilters.filter((filtr) => filtr.name === "hilzy");
+	} else if (currentItems === "filter") {
+		currentItemList = useSelector((state) => state.cards.filter);
+		currentName = "Фільтри";
+
+		currentFilters = allFilters.filter((filtr) => filtr.name === "filter");
+	} else if (currentItems === "aroma") {
+		currentItemList = useSelector((state) => state.cards.aroma);
+		currentName = "Аромати";
+
+		currentFilters = allFilters.filter((filtr) => filtr.name === "aroma");
+	} else if (currentItems === "mashine") {
+		currentItemList = useSelector((state) => state.cards.mashine);
+		currentName = "Машинки";
+
+		currentFilters = allFilters.filter((filtr) => filtr.name === "mashine");
 	}
 
 	const [allRendered, setAllRendered] = useState(false);
+
+	currentItemList = sorting(currentItemList, currentFilters);
 
 	return (
 		<div className={classes.root}>
@@ -94,6 +119,7 @@ export default function Feedbacks() {
 								key={index}
 								itemCard={currentItem}
 								currentSize={normalSize}
+								itemType={currentItems}
 							/>
 						);
 					})

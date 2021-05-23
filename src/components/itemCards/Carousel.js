@@ -53,7 +53,7 @@ const useStyles = makeStyles((props) => ({
 		backgroundColor: colors.secondary,
 	},
 	blackArrow: {
-		backgroundColor: colors.primary,
+		// backgroundColor: colors.primary,
 	},
 }));
 
@@ -98,9 +98,10 @@ export default function Carousel({ escalator, size }) {
 				// counter < 3 && counter++;
 				counter++;
 			} else {
-				escalator.type.length < counter
-					? setShowArrow(false)
-					: setShowArrow(true);
+				// escalator.type.length > 0
+				// ? setShowArrow(false)
+				//:  setShowArrow(true)
+				setShowArrow(true);
 				break;
 			}
 		}
@@ -134,12 +135,13 @@ export default function Carousel({ escalator, size }) {
 		<div className={classes.root}>
 			<div id="carousel" className={classes.carousel}>
 				<div id={escalator.id} className={classes.carouselInner}>
-					{escalator.type.map((tobacco, index) => {
+					{escalator.type.map((escalatorItem, index) => {
 						return (
 							<MainCard
 								key={index}
-								itemCard={tobacco}
+								itemCard={escalatorItem}
 								currentSize={currentSize}
+								itemType={escalator.link}
 							/>
 						);
 					})}

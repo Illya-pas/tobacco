@@ -1,4 +1,10 @@
-export const FETCH_CARDS = "FETCH_CARDS";
+export const FETCH_PAPER = "FETCH_PAPER";
+export const FETCH_HILZY = "FETCH_HILZY";
+export const FETCH_FILTERS = "FETCH_FILTERS";
+export const FETCH_AROMA = "FETCH_AROMA";
+export const FETCH_MASHINE = "FETCH_MASHINE";
+export const FETCH_SEARCH = "FETCH_SEARCH";
+
 export const MENU_WIDTH = "MENU_WIDTH";
 export const PUSH_ITEM_CART = "PUSH_ITEM_CART";
 export const DEL_ITEM_CART = "DEL_ITEM_CART";

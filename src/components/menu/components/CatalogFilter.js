@@ -30,27 +30,31 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CatalogFilter({ filterName }) {
+export default function CatalogFilter({ filterName, filterType }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [selectedFilter, setSelectedFilter] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const activeFilters = useSelector((state) => state.cards.filters);
 
   useEffect(() => {
-    activeFilters.map((activeFilter, index) => {
-      if (activeFilter === filterName) {
-        setCurrentIndex(index);
-        setSelectedFilter(true);
-      }
+    activeFilters.map((activeType) => {
+      activeType.filters.map((activeFilter) => {
+        if (activeFilter === filterName && filterType === activeType.name) {
+          setSelectedFilter(true);
+        }
+      });
     });
   }, [activeFilters]);
 
   const handleSelect = (name) => {
+    let filter = {
+      name: name,
+      type: filterType,
+    };
     setSelectedFilter(!selectedFilter);
     !selectedFilter
-      ? dispatch(addFilter(name))
-      : dispatch(removeFilter(currentIndex));
+      ? dispatch(addFilter(filter))
+      : dispatch(removeFilter(filter));
   };
 
   return (

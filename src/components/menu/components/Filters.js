@@ -1,47 +1,46 @@
-const fil = {
-  name: "Табак",
-  subMenu: [
-    {
-      subName: "Призначення табака",
-      subList: [
-        "Для самокруток",
-        "Бля кальяну",
-        "Для люльки",
-        "Нюхальний табак",
-      ],
-    },
-    {
-      subName: "Бренд",
-      subList: [
-        "Бренд 1",
-        "Бренд 2",
-        "Бренд 4",
-        "Бренд 5",
-        "Бренд 6",
-        "Бренд 7",
-      ],
-    },
-    {
-      subName: "Міцність",
-      subList: [
-        "М’який",
-        "Середньо-м’який",
-        "Середній",
-        "Середньо-міцний",
-        "Міцний",
-      ],
-    },
-    {
-      subName: "Країна виробництва",
-      subList: ["Країна 1", "Країна 2", "Країна 3", "Країна 4", "Країна 5"],
-    },
+const paperFilters = {
+  name: "Бумага",
+  path: "paper",
+  filters: [
+    "Бренд",
+    "Колір",
+    "Довжина",
+    "Ширина",
+    "Густота",
+    "Країна виробництва",
   ],
 };
-const fl = { ...fil };
-fl.name = "Витратники";
-const f = { ...fil };
-f.name = "Сигари";
-const f1 = { ...fil };
-f1.name = "Аксесуари";
+const hilzyFilters = {
+  name: "Гільзи",
+  path: "hilzy",
+  filters: [
+    "Бренд",
+    "Довжина гільзи",
+    "Довжина фільтру",
+    "Діаметр гільзи",
+    "Країна виробництва",
+  ],
+};
+const filterFilters = {
+  name: "Фільтри",
+  path: "filter",
+  filters: ["Бренд", "Довжина фільтрів", "Діаметр фільтрів"],
+};
+const aromaFilters = {
+  name: "Аромати",
+  path: "aroma",
+  filters: ["Бренд", "Аромат", "Країна виробництва"],
+};
+const mashineFilters = {
+  name: "Машинки",
+  path: "mashine",
+  filters: ["Бренд", "Країна виробництва"],
+};
 
-export const menuItems = [fil, fl, f, f1];
+export const menuItems = [
+  paperFilters,
+  hilzyFilters,
+  filterFilters,
+  aromaFilters,
+  mashineFilters,
+];

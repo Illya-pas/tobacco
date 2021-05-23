@@ -7,6 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { littleSize } from "./CarouselSize";
+import { mediaBase } from "../../redux/queryItems";
+
+// DELETE
+import cigarette1 from "../../theme/images/cigarette1.png";
+// import noCigarette from "../../theme/images/no-cigarette.png";
 
 const useStyles = makeStyles((props) => ({
 	card: {
@@ -20,16 +25,21 @@ const useStyles = makeStyles((props) => ({
 
 		"& a": {
 			width: "100%",
+			display: "flex",
+			alignItems: "center",
 			border: `1px solid ${colors.secondary}`,
+			height: (props) => (props.currentSize.blackArrow ? 250 : 300),
+			// padding: 10,
+			overflow: "hidden",
 			"& img": {
 				width: "100%",
 			},
 		},
-		"&:hover": {
-			boxShadow: "inset 0px 0px 10px rgba(0,0,0,0.6)",
-			transition: "box-shadow .2s",
-			cursor: "default",
-		},
+		// "&:hover": {
+		// 	boxShadow: "inset 0px 0px 10px rgba(0,0,0,0.6)",
+		// 	transition: "box-shadow .2s",
+		// 	cursor: "default",
+		// },
 	},
 	cardMarged: {
 		marginTop: 70,
@@ -58,17 +68,24 @@ const useStyles = makeStyles((props) => ({
 	cardBuy: {
 		marginTop: 10,
 		display: "flex",
-		justifyContent: "space-around",
 		"& h5": {
 			fontSize: (props) => props.currentSize.priceSize,
 			display: "flex",
 			alignItems: "center",
+			minWidth: "fit-content",
 		},
+		"& button": {
+			marginLeft: 13,
+		},
+	},
+	optBuy: {
+		justifyContent: "flex-start",
+		margin: "8px 0 5px 0",
 	},
 	noAvailable: {
 		position: "absolute",
 		top: 20,
-		color: colors.secondary,
+		color: "red",
 		fontSize: 20,
 		fontFamily: "Cousine",
 	},
@@ -76,9 +93,9 @@ const useStyles = makeStyles((props) => ({
 
 export default function MainCard({
 	itemCard,
-	styles,
 	currentSize,
 	itemsMargin,
+	itemType,
 }) {
 	const classes = useStyles({ currentSize });
 	const dispatch = useDispatch();
@@ -95,32 +112,48 @@ export default function MainCard({
 		marginRight: 15,
 	};
 
+	const pushToCart = () => {
+		// console.log(itemCard.amount);
+		// let newItemCard = { ...itemCard };
+		// itemCard.amount ? itemCard.amount++ : (itemCard.amount = 1);
+		dispatch(addToCart(itemCard, cart));
+	};
+
+	const getTag = () => {
+		let tag = itemCard.tag[0].tag;
+		return `${tag[0].toUpperCase()}${tag.slice(1)}`;
+	};
+
 	return (
-		<div
-			style={styles}
-			className={clsx(classes.card, itemsMargin && classes.cardMarged)}
-		>
-			{!itemCard.available && (
+		<div className={clsx(classes.card, itemsMargin && classes.cardMarged)}>
+			{!itemCard.availability && (
 				<span className={classes.noAvailable}>Немає в наявності</span>
 			)}
-			<NavLink to={"/article/" + itemCard.id}>
-				<img src={itemCard.img} alt="item" />
+			<NavLink to={`/article/${itemType}/${itemCard.id}`}>
+				<img src={mediaBase + itemCard.image[0].image} alt="item" />
 			</NavLink>
 			<div className={classes.cardInfo}>
 				<div className={classes.cardDescribe}>
-					<p>{itemCard.type}</p>
+					<p>{getTag()}</p>
 					<h5>{itemCard.name}</h5>
 				</div>
-				<div className={classes.cardBuy}>
-					<h5>{itemCard.price} грн</h5>
-					<CustomButton
-						primary={colors.primary}
-						secondary={colors.secondary}
-						text="КУПИТИ"
-						action={() => dispatch(addToCart(itemCard, cart))}
-						styles={buttonStyles}
-						enabled={false}
-					/>
+				<div>
+					<div className={classes.cardBuy}>
+						<h5>{itemCard.retailPrice} грн / шт</h5>
+						<CustomButton
+							primary={colors.primary}
+							secondary={colors.secondary}
+							text="КУПИТИ"
+							action={pushToCart}
+							styles={buttonStyles}
+							enabled={false}
+						/>
+					</div>
+					<div className={clsx(classes.cardBuy, classes.optBuy)}>
+						<h5>
+							{itemCard.wholesalePrice} грн / {itemCard.wholesaleCount}шт
+						</h5>
+					</div>
 				</div>
 			</div>
 		</div>

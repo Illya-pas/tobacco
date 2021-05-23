@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    margin: "120px 80px 0 0",
+    margin: "100px 80px 0 0",
     backgroundColor: theme.palette.background.paper,
     width: "fit-content",
     boxShadow: "0px 0px 40px rgba(0, 0, 0, 0.7)",

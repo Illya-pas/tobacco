@@ -36,7 +36,7 @@ export default function FooterCarousel() {
 	const classes = useStyles();
 	const [showWatched, setShowWatched] = useState(false);
 
-	const tobaccos = useSelector((state) => state.cards.cards.tobacco);
+	const paper = useSelector((state) => state.cards.paper);
 	const locate = useSelector((state) => state.app.location);
 
 	useEffect(() => {
@@ -48,8 +48,8 @@ export default function FooterCarousel() {
 	const carousel = {
 		name: "Табак",
 		id: "watched-carousel",
-		type: tobaccos,
-		link: "/items/tobacco",
+		type: paper,
+		link: "paper",
 	};
 
 	return (

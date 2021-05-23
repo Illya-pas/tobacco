@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { colors } from "../../../theme/colors";
 import CatalogFilter from "./CatalogFilter";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   filterClass: {
@@ -23,27 +24,31 @@ const useStyles = makeStyles({
 export default function CatalogClass({ menuItem, index }) {
   const classes = useStyles();
   const [activeClass, setActiveClass] = useState(false);
+  const history = useHistory();
 
-  const handleActiveClass = () => {
+  const handleActiveClass = (classPath) => {
     setActiveClass(!activeClass);
+    !activeClass && history.push(`/items/${classPath}`);
   };
 
   return (
     <div className={classes.filterClass}>
       {index === 0 ? (
-        <h2 style={{ marginTop: 0 }} onClick={handleActiveClass}>
+        <h2
+          style={{ marginTop: 0 }}
+          onClick={() => handleActiveClass(menuItem.path)}
+        >
           {menuItem.name}
         </h2>
       ) : (
-        <h2 onClick={handleActiveClass}>{menuItem.name}</h2>
+        <h2 onClick={() => handleActiveClass(menuItem.path)}>
+          {menuItem.name}
+        </h2>
       )}
       {activeClass &&
-        menuItem.subMenu.map((filterClasses, index) => (
+        menuItem.filters.map((filter, index) => (
           <div key={index} className={classes.filtersList}>
-            <h3>{filterClasses.subName}</h3>
-            {filterClasses.subList.map((filterItem, index) => (
-              <CatalogFilter key={index} filterName={filterItem} />
-            ))}
+            <CatalogFilter filterName={filter} filterType={menuItem.path} />
           </div>
         ))}
     </div>

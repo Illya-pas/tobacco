@@ -6,7 +6,7 @@ export const normalSize = {
 	describeSize: 16,
 	buttonSize: 20,
 	priceSize: 25,
-	mediaHeight: 500,
+	mediaHeight: 550,
 	blackArrow: false,
 };
 
@@ -18,6 +18,6 @@ export const littleSize = {
 	describeSize: 14,
 	buttonSize: 16,
 	priceSize: 20,
-	mediaHeight: 450,
+	mediaHeight: 480,
 	blackArrow: true,
 };

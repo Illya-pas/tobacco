@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import leftArrow from "../../theme/images/left-arrow.svg";
-import noCigarette from "../../theme/images/no-cigarette.png";
 import { colors } from "../../theme/colors";
+import { mediaBase } from "../../redux/queryItems";
 
 const useStyles = makeStyles({
 	root: {
@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 	controls: {
 		width: "87%",
 		margin: 30,
+		marginBottom: 15,
 		display: "flex",
 		justifyContent: "space-between",
 		"& img": {
@@ -35,9 +36,14 @@ const useStyles = makeStyles({
 	},
 	slider: {
 		width: "100%",
+		minWidth: 300,
 		display: "flex",
 		justifyContent: "center",
+		alignItems: "center",
+		maxHeight: 500,
+		overflow: "hidden",
 		"& img": {
+			height: "fit-content",
 			width: "80%",
 			padding: 20,
 			"@media (max-width: 1329px)": {
@@ -64,7 +70,13 @@ export default function ItemSlider({ item }) {
 	const classes = useStyles();
 	const [itemIndex, setItemIndex] = useState(0);
 
-	const images = [item.img, noCigarette];
+	const getImages = () => {
+		let itemList =
+			item && item.image.map((singleItem) => mediaBase + singleItem.image);
+		return itemList;
+	};
+
+	const images = [...getImages()];
 
 	const plusIndex = () => {
 		itemIndex < images.length - 1
@@ -89,12 +101,7 @@ export default function ItemSlider({ item }) {
 			</div>
 			<div className={classes.describe}>
 				<h2>Опис</h2>
-				<p>
-					Тютюн тонкої нарізки можна використовувати і для скручування
-					самокруток і для забивання гільз. Суміш, що складається з солодкуватої
-					Вірджинії, гіркуватого Берлі та пряного Орієнтал, приправлена
-					​​натуральним кавовим ароматом.
-				</p>
+				<p>{item.description}</p>
 			</div>
 		</div>
 	);

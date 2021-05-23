@@ -30,13 +30,18 @@ export const cartReducer = (state = initialState, action) => {
 		case COUNT_TOTAL:
 			let counter = 0;
 			let count = 0;
+			let price;
 			state.cart.map((singleCartItem) => {
-				counter += singleCartItem.price * singleCartItem.amount;
+				singleCartItem.amount >= singleCartItem.wholesaleCount
+					? (price =
+							singleCartItem.wholesalePrice / singleCartItem.wholesaleCount)
+					: (price = singleCartItem.retailPrice);
+				counter += price * singleCartItem.amount;
 				count += singleCartItem.amount;
 			});
 			return {
 				...state,
-				total: counter,
+				total: Math.ceil(counter),
 				amount: count,
 			};
 

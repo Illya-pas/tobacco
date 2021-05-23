@@ -17,8 +17,8 @@ export const post = async (query) => {
 
 	try {
 		const response = await fetch(URL, requestOptions);
-		const text = await response.text();
-		console.log(text);
+		const json = await response.json();
+		return json;
 	} catch (e) {
 		console.log("error", e);
 	}

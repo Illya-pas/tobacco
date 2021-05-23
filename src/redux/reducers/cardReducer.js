@@ -1,373 +1,105 @@
-import { FETCH_CARDS, ADD_FILTER, REMOVE_FILTER } from "../types";
-import cigarette1 from "../../theme/images/cigarette1.png";
-import noCigarette from "../../theme/images/no-cigarette.png";
+import {
+	ADD_FILTER,
+	REMOVE_FILTER,
+	FETCH_PAPER,
+	FETCH_HILZY,
+	FETCH_FILTERS,
+	FETCH_AROMA,
+	FETCH_MASHINE,
+	FETCH_SEARCH,
+} from "../types";
 
 const initialState = {
-	cards: {
-		tobacco: [
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 1,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 2,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 3,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 4,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 5,
-			},
-			{
-				img: noCigarette,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: false,
-				amount: 0,
-				id: 6,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 7,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 8,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 9,
-			},
-			{
-				img: noCigarette,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: false,
-				amount: 0,
-				id: 10,
-			},
-		],
-		consumables: [
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 11,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 12,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 13,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 14,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 15,
-			},
-			{
-				img: noCigarette,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: false,
-				amount: 0,
-				id: 16,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 17,
-			},
-		],
-		cigarettes: [
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 18,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 19,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 20,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 21,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 22,
-			},
-			{
-				img: noCigarette,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: false,
-				amount: 0,
-				id: 23,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 24,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 25,
-			},
-			{
-				img: noCigarette,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: false,
-				amount: 0,
-				id: 26,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 27,
-			},
-		],
-		accessories: [
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 28,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 29,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 30,
-			},
-			{
-				img: noCigarette,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: false,
-				amount: 0,
-				id: 31,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 32,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 33,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 34,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 35,
-			},
-			{
-				img: noCigarette,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: false,
-				amount: 0,
-				id: 36,
-			},
-			{
-				img: cigarette1,
-				type: "Тютюн для самокруток",
-				name: "Mac Baren Cherry Choice 40 г.",
-				price: 180,
-				available: true,
-				amount: 0,
-				id: 37,
-			},
-		],
-	},
+	search: [],
+	paper: [],
+	hilzy: [],
+	filter: [],
+	aroma: [],
+	mashine: [],
 	total: 0,
-	filters: [],
-	currentPage: 1,
+	filters: [
+		{
+			name: "paper",
+			filters: [],
+		},
+		{
+			name: "hilzy",
+			filters: [],
+		},
+		{
+			name: "filter",
+			filters: [],
+		},
+		{
+			name: "aroma",
+			filters: [],
+		},
+		{
+			name: "mashine",
+			filters: [],
+		},
+	],
 };
 
 export const cardReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case FETCH_CARDS:
-			return { ...state, cards: action.payload };
+		case FETCH_SEARCH:
+			// let copySearch;
+			// let itemID = action.payload[0] && action.payload[0].id;
 
-		// case FETCH_ARTICLES:
-		// 	return {...state, cards: action.payload}
+			// copySearch.map((searchItem) => {
+			// 	if (searchItem.id === itemID) {
+			// 		copySearch = [...state.search]
+			// 		return copySearch;
+			// 	} else {
+			// 		copySearch.concat(action.payload ? action.payload[0] : [1]);
+			// 		return copySearch;
+			// 	}
+			// });
+			// console.log(copySearch);
+			// console.log(action.payload[0] && action.payload[0].id);
+			// return { ...state, search: copySearch };
 
-		// case SET_CURRENT_PAGE:
-		// 	return {...state, currentPage: action.payload}
+			return { ...state, search: state.search.concat(action.payload) };
+
+		case FETCH_PAPER:
+			return { ...state, paper: action.payload };
+
+		case FETCH_HILZY:
+			return { ...state, hilzy: action.payload };
+
+		case FETCH_FILTERS:
+			return { ...state, filter: action.payload };
+
+		case FETCH_AROMA:
+			return { ...state, aroma: action.payload };
+
+		case FETCH_MASHINE:
+			return { ...state, mashine: action.payload };
 
 		case ADD_FILTER:
-			return { ...state, filters: state.filters.concat(action.payload) };
+			let copiedFilters = [...state.filters];
+			copiedFilters.map((fil, index) => {
+				if (fil.name === action.payload.type) {
+					fil.filters.push(action.payload.name);
+					copiedFilters.splice(index, 1, fil);
+				}
+			});
+			return { ...state, filters: copiedFilters };
 
 		case REMOVE_FILTER:
 			let copyFilters = [...state.filters];
-			copyFilters.splice(action.payload, 1);
+			copyFilters.map((fil, index) => {
+				if (fil.name === action.payload.type) {
+					fil.filters.map((lftr, index) => {
+						if (lftr === action.payload.name) {
+							fil.filters.splice(index, 1);
+						}
+					});
+
+					copyFilters.splice(index, 1, fil);
+				}
+			});
 			return { ...state, filters: copyFilters };
 
 		default:

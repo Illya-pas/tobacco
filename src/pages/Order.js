@@ -7,6 +7,8 @@ import CustomSelect from "../components/menuItems/CustomSelect";
 import ControlInput from "../components/menuItems/ControlInput";
 import { useForm, Controller } from "react-hook-form";
 import Divider from "../components/Divider";
+import { useHistory } from "react-router-dom";
+import clsx from "clsx";
 
 const useStyles = makeStyles({
 	root: {
@@ -142,10 +144,16 @@ const useStyles = makeStyles({
 			fontSize: 32,
 		},
 	},
+	backButton: {
+		backgroundColor: "red",
+		margin: "10px 0 0 0",
+		// color: colors.secondary,
+	},
 });
 
 export default function Order() {
 	const classes = useStyles();
+	const history = useHistory();
 
 	const cart = useSelector((state) => state.cart.cart);
 	const total = useSelector((state) => state.cart.total);
@@ -262,6 +270,12 @@ export default function Order() {
 								<div className={classes.notFound}>Виберіть товар</div>
 							)}
 						</div>
+						<button
+							className={clsx(classes.formButton, classes.backButton)}
+							onClick={() => history.push("/")}
+						>
+							Повернутись до покупок
+						</button>
 					</div>
 				</div>
 

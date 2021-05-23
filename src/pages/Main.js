@@ -38,57 +38,107 @@ export default function Main() {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 
-	const tobaccos = useSelector((state) => state.cards.cards.tobacco);
-	const consumables = useSelector((state) => state.cards.cards.consumables);
-	const cigarettes = useSelector((state) => state.cards.cards.cigarettes);
-	const accessories = useSelector((state) => state.cards.cards.accessories);
+	const search = useSelector((state) => state.cards.search);
+	const paper = useSelector((state) => state.cards.paper);
+	const hilzy = useSelector((state) => state.cards.hilzy);
+	const filter = useSelector((state) => state.cards.filter);
+	const aroma = useSelector((state) => state.cards.aroma);
+	const mashine = useSelector((state) => state.cards.mashine);
 
 	useEffect(() => {
-		dispatch(fetchItems());
+		dispatch(fetchItems("paper"));
+		dispatch(fetchItems("hilzy"));
+		dispatch(fetchItems("filter"));
+		dispatch(fetchItems("aroma"));
+		dispatch(fetchItems("mashine"));
 	}, []);
 
 	const carousels = [
 		{
-			name: "Табак",
-			id: "tobacco-carousel",
-			type: tobaccos,
-			link: "/items/tobacco",
+			name: "Бумага",
+			id: "paper-carousel",
+			type: paper,
+			link: "paper",
 		},
 		{
-			name: "Витратники",
-			id: "consumables-carousel",
-			type: consumables,
-			link: "/items/consumables",
+			name: "Гільзи",
+			id: "hilzy-carousel",
+			type: hilzy,
+			link: "hilzy",
 		},
 		{
-			name: "Сигари",
-			id: "cigarettes-carousel",
-			type: cigarettes,
-			link: "/items/cigarettes",
+			name: "Фільтри",
+			id: "filter-carousel",
+			type: filter,
+			link: "filter",
 		},
 		{
-			name: "Аксесуари",
-			id: "accessories-carousel",
-			type: accessories,
-			link: "/items/accessories",
+			name: "Аромати",
+			id: "aroma-carousel",
+			type: aroma,
+			link: "aroma",
+		},
+		{
+			name: "Машинки",
+			id: "mashine-carousel",
+			type: mashine,
+			link: "mashine",
 		},
 	];
 
+	const searchCarousel = {
+		name: "Пошук",
+		id: "search-carousel",
+		type: search,
+		link: "search",
+	};
+
 	return (
 		<div className={classes.main}>
-			{carousels.map((carousel, index) => {
-				return (
-					<div key={index}>
-						<div className={classes.itemGroup}>
-							<h1>
-								<NavLink to={carousel.link}>{carousel.name}</NavLink>
-							</h1>
-							<Carousel escalator={carousel} size={normalSize} />
+			{!searchCarousel.type.length ? (
+				carousels.map((carousel, index) => {
+					return !carousel.type.length ? null : (
+						<div key={index}>
+							<div className={classes.itemGroup}>
+								<h1>
+									<NavLink to={`/items/${carousel.link}`}>
+										{carousel.name}
+									</NavLink>
+								</h1>
+								<Carousel escalator={carousel} size={normalSize} />
+							</div>
+							<Divider />
 						</div>
-						<Divider />
+					);
+				})
+			) : (
+				<div>
+					<div className={classes.itemGroup}>
+						<h1>
+							<NavLink to={`/items/${searchCarousel.link}`}>
+								{searchCarousel.name}
+							</NavLink>
+						</h1>
+						<Carousel escalator={searchCarousel} size={normalSize} />
 					</div>
-				);
-			})}
+					<Divider />
+					{carousels.map((carousel, index) => {
+						return !carousel.type.length ? null : (
+							<div key={index}>
+								<div className={classes.itemGroup}>
+									<h1>
+										<NavLink to={`/items/${carousel.link}`}>
+											{carousel.name}
+										</NavLink>
+									</h1>
+									<Carousel escalator={carousel} size={normalSize} />
+								</div>
+								<Divider />
+							</div>
+						);
+					})}
+				</div>
+			)}
 			<ContactsBlock />
 		</div>
 	);
