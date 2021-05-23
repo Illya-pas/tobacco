@@ -228,8 +228,6 @@ export default function Article() {
 
 	// item[0] ? (item[0].img = cigarette1) : null;
 
-	let list = ["", "", ""];
-
 	const getTag = () => {
 		let tag = item[0].tag[0].tag;
 		return `${tag[0].toUpperCase()}${tag.slice(1)}`;

@@ -13,3 +13,4 @@ export const CHANGE_AMOUNT = "CHANGE_AMOUNT";
 export const SET_LOCATION = "SET_LOCATION";
 export const ADD_FILTER = "ADD_FILTER";
 export const REMOVE_FILTER = "REMOVE_FILTER";
+export const CLEAR_SEARCH = "CLEAR_SEARCH";

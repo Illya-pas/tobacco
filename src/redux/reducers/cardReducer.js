@@ -7,6 +7,7 @@ import {
 	FETCH_AROMA,
 	FETCH_MASHINE,
 	FETCH_SEARCH,
+	CLEAR_SEARCH,
 } from "../types";
 
 const initialState = {
@@ -61,6 +62,9 @@ export const cardReducer = (state = initialState, action) => {
 			// return { ...state, search: copySearch };
 
 			return { ...state, search: state.search.concat(action.payload) };
+
+		case CLEAR_SEARCH:
+			return { ...state, search: action.payload };
 
 		case FETCH_PAPER:
 			return { ...state, paper: action.payload };

@@ -14,6 +14,7 @@ import {
 	FETCH_AROMA,
 	FETCH_MASHINE,
 	FETCH_SEARCH,
+	CLEAR_SEARCH,
 } from "./types";
 
 import {
@@ -167,5 +168,11 @@ export const addFilter = (filter) => {
 export const removeFilter = (filter) => {
 	return (dispatch) => {
 		dispatch({ type: REMOVE_FILTER, payload: filter });
+	};
+};
+
+export const clearSearch = () => {
+	return (dispatch) => {
+		dispatch({ type: CLEAR_SEARCH, payload: [] });
 	};
 };

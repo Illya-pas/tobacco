@@ -11,7 +11,7 @@ import { changeWidthMenu } from "../../redux/actions";
 import { useForm, Controller } from "react-hook-form";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import clsx from "clsx";
-import { fetchItems } from "../../redux/actions";
+import { fetchItems, clearSearch } from "../../redux/actions";
 
 const headerHeight = 60;
 
@@ -129,6 +129,8 @@ export default function Header() {
 		let filterByName = `(name: "${data.search}")`;
 		let filterByBrand = `(brand: "${data.search}")`;
 		let filterByProducer = `(producer: "${data.search}")`;
+
+		dispatch(clearSearch());
 
 		// dispatch(fetchItems("paper", filterByName));
 		dispatch(fetchItems("paper", filterByBrand, search));
