@@ -54,7 +54,8 @@ const useStyles = makeStyles((props) => ({
 	},
 	cardInfo: {
 		width: "100%",
-		backgroundColor: colors.secondary,
+		backgroundColor: colors.primary,
+		color: colors.secondary,
 		padding: "5px 15px",
 		"& p": {
 			fontSize: (props) => props.currentSize.describeSize,
@@ -107,7 +108,7 @@ export default function MainCard({
 		fontSize: 20,
 		minWidth: 80,
 		borderRadius: 3,
-		backgroundColor: colors.semiWhite,
+		backgroundColor: colors.secondary,
 		padding: "5px 12px",
 		marginRight: 15,
 	};

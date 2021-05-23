@@ -16,6 +16,8 @@ import { useDispatch } from "react-redux";
 import { changeLocation } from "./redux/actions";
 import FooterCarousel from "./components/footer/FooterCarousel";
 
+import logo from "./theme/images/logo.svg";
+
 const useStyles = makeStyles({
 	root: {
 		height: "100%",
@@ -53,6 +55,13 @@ export default withRouter(function App({ location }) {
 		dispatch(changeLocation(location.pathname));
 	}, [location]);
 
+	// <img
+	// 	style={{ marginBottom: 10, marginTop: -20 }}
+	// 	height={50}
+	// 	width={200}
+	// 	src={logo}
+	// />
+
 	return (
 		<div className={classes.root}>
 			<Header />
@@ -71,7 +80,6 @@ export default withRouter(function App({ location }) {
 						</Switch>
 					</div>
 				</main>
-				<FooterCarousel />
 			</div>
 			<Footer />
 		</div>
