@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/Illya-pas/tobacco/static/css/main.7af390c4.chunk.css",
+    "main.js": "/Illya-pas/tobacco/static/js/main.995b2323.chunk.js",
+    "main.js.map": "/Illya-pas/tobacco/static/js/main.995b2323.chunk.js.map",
+    "runtime-main.js": "/Illya-pas/tobacco/static/js/runtime-main.0b331cfc.js",
+    "runtime-main.js.map": "/Illya-pas/tobacco/static/js/runtime-main.0b331cfc.js.map",
+    "static/js/2.475eaa1d.chunk.js": "/Illya-pas/tobacco/static/js/2.475eaa1d.chunk.js",
+    "static/js/2.475eaa1d.chunk.js.map": "/Illya-pas/tobacco/static/js/2.475eaa1d.chunk.js.map",
+    "static/js/3.4250f203.chunk.js": "/Illya-pas/tobacco/static/js/3.4250f203.chunk.js",
+    "static/js/3.4250f203.chunk.js.map": "/Illya-pas/tobacco/static/js/3.4250f203.chunk.js.map",
+    "index.html": "/Illya-pas/tobacco/index.html",
+    "static/css/main.7af390c4.chunk.css.map": "/Illya-pas/tobacco/static/css/main.7af390c4.chunk.css.map",
+    "static/js/2.475eaa1d.chunk.js.LICENSE.txt": "/Illya-pas/tobacco/static/js/2.475eaa1d.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/Illya-pas/tobacco/static/media/SegoeUI.b127acaf.ttf",
+    "static/media/bottom-arrow.dd9f6ad6.svg": "/Illya-pas/tobacco/static/media/bottom-arrow.dd9f6ad6.svg",
+    "static/media/cart.e4e6bcb7.svg": "/Illya-pas/tobacco/static/media/cart.e4e6bcb7.svg",
+    "static/media/cigarette1.1674b400.png": "/Illya-pas/tobacco/static/media/cigarette1.1674b400.png",
+    "static/media/left-arrow.0c55edf7.svg": "/Illya-pas/tobacco/static/media/left-arrow.0c55edf7.svg",
+    "static/media/no-cigarette.9bb9be18.png": "/Illya-pas/tobacco/static/media/no-cigarette.9bb9be18.png",
+    "static/media/point.4c4b490e.svg": "/Illya-pas/tobacco/static/media/point.4c4b490e.svg",
+    "static/media/right-arrow-white.b82ad54c.svg": "/Illya-pas/tobacco/static/media/right-arrow-white.b82ad54c.svg",
+    "static/media/right-arrow.1edcc5cb.svg": "/Illya-pas/tobacco/static/media/right-arrow.1edcc5cb.svg",
+    "static/media/search.f5aa3bbd.svg": "/Illya-pas/tobacco/static/media/search.f5aa3bbd.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0b331cfc.js",
+    "static/js/2.475eaa1d.chunk.js",
+    "static/css/main.7af390c4.chunk.css",
+    "static/js/main.995b2323.chunk.js"
+  ]
+}
