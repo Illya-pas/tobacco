@@ -2,6 +2,7 @@ const URL = "http://api.imperiaua.com.ua/graphql/";
 
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
+myHeaders.append("credentials", "include");
 
 export const post = async (query) => {
 	let graphql = JSON.stringify({

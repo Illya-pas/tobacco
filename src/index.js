@@ -12,7 +12,12 @@ import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
 
-const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
+const store = createStore(
+	rootReducer,
+	compose(
+		applyMiddleware(thunk)
+	)
+);
 
 const app = (
 	<Provider store={store}>
